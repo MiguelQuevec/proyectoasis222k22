@@ -7,7 +7,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 public class MDI_Clientes extends javax.swing.JFrame {
 
@@ -16,9 +15,11 @@ public class MDI_Clientes extends javax.swing.JFrame {
     String idBusqueda = LOGIN_Administracion.idUsuario;
 
     public static JLabel Jl_logo = new JLabel();
-
+    
     private Prcs_Pedidos prcs_pedidos;
-
+    private Prcs_CancelarP prcs_cancelarP;
+    private Prcs_RastrearP prcs_rastrearP;
+    
     public MDI_Clientes() {
         initComponents();
         Diseño();
@@ -31,7 +32,7 @@ public class MDI_Clientes extends javax.swing.JFrame {
         logo();
         Jdp_contenedor.add(Jl_logo);
     }
-
+    
     public void logo() {
         ImageIcon icon = new ImageIcon("src/main/java/assets/logoC.png");
         Jl_logo.setSize(512, 512);
@@ -58,6 +59,8 @@ public class MDI_Clientes extends javax.swing.JFrame {
         Sbm_procesos = new javax.swing.JMenu();
         Mnu_procesos = new javax.swing.JMenu();
         Prcs_Pedidos = new javax.swing.JMenuItem();
+        Prcs_RastrearP = new javax.swing.JMenuItem();
+        Prcs_CancelarP = new javax.swing.JMenuItem();
         Sbm_herramientas = new javax.swing.JMenu();
         Sbm_ayuda = new javax.swing.JMenu();
         Btn_cerrarSesion = new javax.swing.JMenu();
@@ -117,6 +120,22 @@ public class MDI_Clientes extends javax.swing.JFrame {
         });
         Mnu_procesos.add(Prcs_Pedidos);
 
+        Prcs_RastrearP.setText("Rastrear Pedido");
+        Prcs_RastrearP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Prcs_RastrearPActionPerformed(evt);
+            }
+        });
+        Mnu_procesos.add(Prcs_RastrearP);
+
+        Prcs_CancelarP.setText("Cancelar Pedido");
+        Prcs_CancelarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Prcs_CancelarPActionPerformed(evt);
+            }
+        });
+        Mnu_procesos.add(Prcs_CancelarP);
+
         Sbm_procesos.add(Mnu_procesos);
 
         Mnb_menu.add(Sbm_procesos);
@@ -131,11 +150,6 @@ public class MDI_Clientes extends javax.swing.JFrame {
 
         Btn_cerrarSesion.setText("Cerrar Sesión");
         Btn_cerrarSesion.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        Btn_cerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Btn_cerrarSesionMouseClicked(evt);
-            }
-        });
         Mnb_menu.add(Btn_cerrarSesion);
 
         setJMenuBar(Mnb_menu);
@@ -160,7 +174,7 @@ public class MDI_Clientes extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentResized
 
     private void Sbm_actualizarPermisosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Sbm_actualizarPermisosMouseClicked
-
+        
     }//GEN-LAST:event_Sbm_actualizarPermisosMouseClicked
 
     private void Prcs_PedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prcs_PedidosActionPerformed
@@ -175,12 +189,29 @@ public class MDI_Clientes extends javax.swing.JFrame {
         prcs_pedidos.toFront();
     }//GEN-LAST:event_Prcs_PedidosActionPerformed
 
-    private void Btn_cerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_cerrarSesionMouseClicked
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea cerrar sesión?", "Verifiación", JOptionPane.YES_NO_OPTION);
-        if (confirmar == 0) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_Btn_cerrarSesionMouseClicked
+    private void Prcs_CancelarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prcs_CancelarPActionPerformed
+        // TODO add your handling code here:
+        prcs_cancelarP = new Prcs_CancelarP();
+
+        Jdp_contenedor.add(prcs_cancelarP);
+        Dimension desktopSize = Jdp_contenedor.getSize();
+        Dimension FrameSize = prcs_cancelarP.getSize();
+        prcs_cancelarP.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        prcs_cancelarP.setVisible(true);
+        prcs_cancelarP.toFront();
+    }//GEN-LAST:event_Prcs_CancelarPActionPerformed
+
+    private void Prcs_RastrearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prcs_RastrearPActionPerformed
+        // TODO add your handling code here:
+        prcs_rastrearP = new Prcs_RastrearP();
+
+        Jdp_contenedor.add(prcs_rastrearP);
+        Dimension desktopSize = Jdp_contenedor.getSize();
+        Dimension FrameSize = prcs_rastrearP.getSize();
+        prcs_rastrearP.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        prcs_rastrearP.setVisible(true);
+        prcs_rastrearP.toFront();
+    }//GEN-LAST:event_Prcs_RastrearPActionPerformed
 
     public static void main(String args[]) {
         //FLATLAF
@@ -200,7 +231,9 @@ public class MDI_Clientes extends javax.swing.JFrame {
     public static javax.swing.JMenuBar Mnb_menu;
     public static javax.swing.JMenu Mnu_mantenimientos;
     public static javax.swing.JMenu Mnu_procesos;
+    private javax.swing.JMenuItem Prcs_CancelarP;
     private javax.swing.JMenuItem Prcs_Pedidos;
+    private javax.swing.JMenuItem Prcs_RastrearP;
     public static javax.swing.JMenu Sbm_actualizarPermisos;
     public static javax.swing.JMenu Sbm_archivos;
     public static javax.swing.JMenu Sbm_ayuda;
