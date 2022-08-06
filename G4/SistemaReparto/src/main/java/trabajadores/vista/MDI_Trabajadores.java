@@ -79,8 +79,11 @@ public class MDI_Trabajadores extends javax.swing.JFrame {
         Sbm_procesos = new javax.swing.JMenu();
         Mnu_procesos = new javax.swing.JMenu();
         MnI_RutasRemitente = new javax.swing.JMenuItem();
-        MnI_RutasRemitente1 = new javax.swing.JMenuItem();
+        MnI_RutaPedido2 = new javax.swing.JMenuItem();
         MnI_RutaPedido = new javax.swing.JMenuItem();
+        MnI_RutaPedido1 = new javax.swing.JMenuItem();
+        MnI_RutaPedido3 = new javax.swing.JMenuItem();
+        MnI_RutaPedido4 = new javax.swing.JMenuItem();
         Sbm_herramientas = new javax.swing.JMenu();
         Sbm_ayuda = new javax.swing.JMenu();
         Btn_cerrarSesion = new javax.swing.JMenu();
@@ -162,13 +165,13 @@ public class MDI_Trabajadores extends javax.swing.JFrame {
         });
         Mnu_procesos.add(MnI_RutasRemitente);
 
-        MnI_RutasRemitente1.setText("Creación de Rutas de Destinatario");
-        MnI_RutasRemitente1.addActionListener(new java.awt.event.ActionListener() {
+        MnI_RutaPedido2.setText("Creación Rutas de Destinatario");
+        MnI_RutaPedido2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnI_RutasRemitente1ActionPerformed(evt);
+                MnI_RutaPedido2ActionPerformed(evt);
             }
         });
-        Mnu_procesos.add(MnI_RutasRemitente1);
+        Mnu_procesos.add(MnI_RutaPedido2);
 
         MnI_RutaPedido.setText("Asignación Ruta a Pedido");
         MnI_RutaPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +180,30 @@ public class MDI_Trabajadores extends javax.swing.JFrame {
             }
         });
         Mnu_procesos.add(MnI_RutaPedido);
+
+        MnI_RutaPedido1.setText("Almacen Pedidos");
+        MnI_RutaPedido1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnI_RutaPedido1ActionPerformed(evt);
+            }
+        });
+        Mnu_procesos.add(MnI_RutaPedido1);
+
+        MnI_RutaPedido3.setText("Asignacion Ruta Entrega");
+        MnI_RutaPedido3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnI_RutaPedido3ActionPerformed(evt);
+            }
+        });
+        Mnu_procesos.add(MnI_RutaPedido3);
+
+        MnI_RutaPedido4.setText("Entrega");
+        MnI_RutaPedido4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnI_RutaPedido4ActionPerformed(evt);
+            }
+        });
+        Mnu_procesos.add(MnI_RutaPedido4);
 
         Sbm_procesos.add(Mnu_procesos);
 
@@ -257,18 +284,6 @@ public class MDI_Trabajadores extends javax.swing.JFrame {
         asgn_repartidorVehiculo.toFront();
     }//GEN-LAST:event_MnI_RepartidorVehiculoActionPerformed
 
-    private void MnI_RutasRemitente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnI_RutasRemitente1ActionPerformed
-        // TODO add your handling code here:
-        asgn_RutaDestinatario = new Prcs_RutaDestinatario();
-
-        Jdp_contenedor.add(asgn_RutaDestinatario);
-        Dimension desktopSize = Jdp_contenedor.getSize();
-        Dimension FrameSize = asgn_RutaDestinatario.getSize();
-        asgn_RutaDestinatario.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        asgn_RutaDestinatario.setVisible(true);
-        asgn_RutaDestinatario.toFront();
-    }//GEN-LAST:event_MnI_RutasRemitente1ActionPerformed
-
     private void Btn_cerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_cerrarSesionMouseClicked
         int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea cerrar sesión?", "Verifiación", JOptionPane.YES_NO_OPTION);
         if (confirmar == 0) {
@@ -294,6 +309,30 @@ public class MDI_Trabajadores extends javax.swing.JFrame {
         asgn_rutaPedido.toFront();
     }//GEN-LAST:event_MnI_RutaPedidoActionPerformed
 
+    private void MnI_RutaPedido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnI_RutaPedido1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnI_RutaPedido1ActionPerformed
+
+    private void MnI_RutaPedido2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnI_RutaPedido2ActionPerformed
+        // TODO add your handling code here:
+         asgn_RutaDestinatario = new Prcs_RutaDestinatario();
+
+        Jdp_contenedor.add(asgn_RutaDestinatario);
+        Dimension desktopSize = Jdp_contenedor.getSize();
+        Dimension FrameSize = asgn_RutaDestinatario.getSize();
+        asgn_RutaDestinatario.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        asgn_RutaDestinatario.setVisible(true);
+        asgn_RutaDestinatario.toFront();
+    }//GEN-LAST:event_MnI_RutaPedido2ActionPerformed
+
+    private void MnI_RutaPedido3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnI_RutaPedido3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnI_RutaPedido3ActionPerformed
+
+    private void MnI_RutaPedido4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnI_RutaPedido4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnI_RutaPedido4ActionPerformed
+
     public static void main(String args[]) {
         //FLATLAF
         FlatLightLaf.setup();
@@ -312,8 +351,11 @@ public class MDI_Trabajadores extends javax.swing.JFrame {
     public static javax.swing.JMenuItem MnI_PilotoVehiculo;
     public static javax.swing.JMenuItem MnI_RepartidorVehiculo;
     public static javax.swing.JMenuItem MnI_RutaPedido;
+    public static javax.swing.JMenuItem MnI_RutaPedido1;
+    public static javax.swing.JMenuItem MnI_RutaPedido2;
+    public static javax.swing.JMenuItem MnI_RutaPedido3;
+    public static javax.swing.JMenuItem MnI_RutaPedido4;
     public static javax.swing.JMenuItem MnI_RutasRemitente;
-    public static javax.swing.JMenuItem MnI_RutasRemitente1;
     public static javax.swing.JMenuBar Mnb_menu;
     public static javax.swing.JMenu Mnu_mantenimientos;
     public static javax.swing.JMenu Mnu_procesos;

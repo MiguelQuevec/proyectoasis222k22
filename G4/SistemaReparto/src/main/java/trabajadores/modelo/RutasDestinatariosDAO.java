@@ -20,13 +20,13 @@ public class RutasDestinatariosDAO {
     
     public static String idRuta,idVehiculo, estado;
     
-    private static final String SQL_INSERT = "INSERT into Rutas_Destinatario(fkvehiculo,Estrd) values(?,?)";
+    private static final String SQL_INSERT = "INSERT into Rutas_Destinatario(fkpilveh,Estrr) values(?,?)";
     private static final String SQL_DELETE = "DELETE from Rutas_Destinatario where pkidruta = ?";
-    private static final String SQL_UPDATE = "UPDATE Rutas_Destinatario SET fkvehiculo=?, Estrd=? WHERE pkidruta=?";
+    private static final String SQL_UPDATE = "UPDATE Rutas_Destinatario SET fkpilveh=?, Estrr=? WHERE pkidruta=?";
     
     //Mostrar
     public List<RutasDestinatario> select() {
-        String SQL_SELECT = "SELECT * FROM Rutas_Destinatario WHERE pkidruta LIKE '%" + idRuta + "%' OR fkvehiculo LIKE '%" + idVehiculo + "%'";
+        String SQL_SELECT = "SELECT * FROM rutas_destinatario WHERE pkidruta LIKE '%" + idRuta + "%' OR fkpilveh LIKE '%" + idVehiculo + "%'";
         RutasDestinatario rutas = null;
         List<RutasDestinatario> listaRemitente = new ArrayList<RutasDestinatario>();
         try {
@@ -35,8 +35,8 @@ public class RutasDestinatariosDAO {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 String idAsn = rs.getString("pkidruta");
-                String idVehiculo = rs.getString("fkvehiculo");
-                String estado = rs.getString("Estrd");
+                String idVehiculo = rs.getString("fkpilveh");
+                String estado = rs.getString("Estrr");
                 rutas = new RutasDestinatario();
                 rutas.setIdRuta(idAsn);
                 rutas.setIdVehiculo(idVehiculo);

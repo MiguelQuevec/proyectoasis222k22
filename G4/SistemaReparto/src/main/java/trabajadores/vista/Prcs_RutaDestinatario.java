@@ -27,7 +27,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
     }
 
     public void diseño() {
-        setTitle("Creación de Rutas Remitente");
+        setTitle("Creación de Rutas Destinatario");
         procesosr.cursorMano(Tbl_Datos, Btn_ayuda, Btn_cancelar, Btn_eliminar, Btn_guardar, Btn_modificar, Btn_reporte);
     }
 
@@ -103,6 +103,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setToolTipText("");
 
         Pnl_ingresoDatos.setBackground(new java.awt.Color(172, 203, 225));
         Pnl_ingresoDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 78, 65), 1, true));
