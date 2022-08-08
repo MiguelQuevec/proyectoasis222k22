@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package trabajadores.modelo;
 
 import java.sql.Connection;
@@ -7,39 +11,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import trabajadores.controlador.RutasDestinatario;
+import trabajadores.controlador.AlmaacenamientoPedido;
 
 /**
  *
  * @author Alejandro
  */
-public class RutasDestinatariosDAO {
+public class AlmacenamientoPedidoDAO {
     Connection conn = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
     
-    public static String idRuta,idVehiculo, estado;
+    public static String idAlmacenamiento, idAsignacion, idBodega, Estado;
     
-    private static final String SQL_INSERT = "INSERT into Rutas_Destinatario(fkpilveh,Estrr) values(?,?)";
-    private static final String SQL_DELETE = "DELETE from Rutas_Destinatario where pkidruta = ?";
-    private static final String SQL_UPDATE = "UPDATE Rutas_Destinatario SET fkpilveh=?, Estrr=? WHERE pkidruta=?";
+    //private static final String SQL_INSERT = "INSERT into Rutas_Destinatario(fkpilveh,Estrr) values(?,?)";
+    //private static final String SQL_DELETE = "DELETE from Rutas_Destinatario where pkidruta = ?";
+    //private static final String SQL_UPDATE = "UPDATE Rutas_Destinatario SET fkpilveh=?, Estrr=? WHERE pkidruta=?";
     
     //Mostrar
-    public List<RutasDestinatario> select() {
-        String SQL_SELECT = "SELECT * FROM rutas_destinatario WHERE pkidruta LIKE '%" + idRuta + "%' OR fkpilveh LIKE '%" + idVehiculo + "%'";
-        RutasDestinatario rutas = null;
-        List<RutasDestinatario> listaRemitente = new ArrayList<RutasDestinatario>();
+    public List<AlmaacenamientoPedido> select() {
+        String SQL_SELECT = "SELECT * FROM almacenamiento_pedidos WHERE pkidalmacenamiento LIKE '%" + idAlmacenamiento + "%' OR fkidasignacion LIKE '%" + idAsignacion + "%'";
+        AlmaacenamientoPedido rutas = null;
+        List<AlmaacenamientoPedido> listaRemitente = new ArrayList<AlmaacenamientoPedido>();
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                String idAsn = rs.getString("pkidruta");
-                String idVehiculo = rs.getString("fkpilveh");
-                String estado = rs.getString("Estrr");
-                rutas = new RutasDestinatario();
-                rutas.setIdRuta(idAsn);
-                rutas.setIdVehiculo(idVehiculo);
+                String idAlmacen = rs.getString("pkidalmacenamiento");
+                String idAsig = rs.getString("fkidasignacion");
+                String idBodega = rs.getString("fkidbodega");
+                String estado = rs.getString("Estalm");
+                rutas = new AlmaacenamientoPedido();
+                rutas.setIdAlmacenamiento(idAlmacen);
+                rutas.setIdAsignacion(idAsig);
+                rutas.setIdAlmacenamiento(idAlmacen);
+                rutas.setIdBodega(idBodega);
                 rutas.setEstado(estado);
                 listaRemitente.add(rutas);
             }
@@ -52,7 +59,7 @@ public class RutasDestinatariosDAO {
         }
         return listaRemitente;
     }
-    
+    /*
      public int insert(RutasDestinatario asignacion) {
         int rows = 0;
         try {
@@ -71,7 +78,8 @@ public class RutasDestinatariosDAO {
         }
         return rows;
     }
-    
+    */
+    /*
      public int update(RutasDestinatario asignacion) {
         int rows = 0;
         try {
@@ -90,7 +98,8 @@ public class RutasDestinatariosDAO {
         }
         return rows;
     }
-     
+     */
+    /*
      public int delete(RutasDestinatario asignacion) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -109,4 +118,5 @@ public class RutasDestinatariosDAO {
         }
         return rows;
     }
+    */
 }

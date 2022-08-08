@@ -4,23 +4,35 @@ import administracion.vista.*;
 import java.util.List;
 
 import administracion.controlador.ProcesosRepetidos;
-import administracion.controlador.Vehiculos;
-import administracion.modelo.VehiculosDAO;
-import trabajadores.controlador.RutasDestinatario;
 import trabajadores.controlador.TrabajadorVehiculo;
-import trabajadores.modelo.RutasDestinatariosDAO;
 import trabajadores.modelo.TrabajadorVehiculoDAO;
 
-public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
+
+import administracion.controlador.Vehiculos;
+import administracion.modelo.VehiculosDAO;
+
+import trabajadores.controlador.RutasDestinatario;
+import trabajadores.modelo.RutasDestinatariosDAO;
+
+import administracion.controlador.Bodegas;
+import administracion.modelo.BodegasDAO;
+
+
+
+public class Prcs_AlmacenamientoPedidos extends javax.swing.JInternalFrame {
 
     ProcesosRepetidos procesosr = new ProcesosRepetidos();
     //FuncionesBitacora funcBitacora = new FuncionesBitacora();
     RutasDestinatario ruta = new RutasDestinatario();
     RutasDestinatariosDAO rutaDAO = new RutasDestinatariosDAO();
+    
+    
     TrabajadorVehiculo asignacion = new TrabajadorVehiculo();
     TrabajadorVehiculoDAO pilotovdao = new TrabajadorVehiculoDAO();
+    
+    
 
-    public Prcs_RutaDestinatario() {
+    public Prcs_AlmacenamientoPedidos() {
         initComponents();
         diseño();
         cargarDatos("");
@@ -38,6 +50,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
 
     private void cargarDatos(String query) {
         ProcesosRepetidos procesosr = new ProcesosRepetidos();
+        
         RutasDestinatariosDAO.idRuta = query;
         RutasDestinatariosDAO.idVehiculo = query;
         String encabezado[] = {"ID RUTA", "ID ASIGNACION PILOTO-VEHICULO", "ESTADO"};
@@ -92,6 +105,10 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
         Btn_fondoCancelar = new javax.swing.JPanel();
         Btn_cancelar = new javax.swing.JLabel();
         Txt_estado = new javax.swing.JTextField();
+        Lbl_idVehiculo1 = new javax.swing.JLabel();
+        Txt_idAsignacion1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        Btn_buscarAsignacion1 = new javax.swing.JButton();
         Pnl_datos = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tbl_Datos = new javax.swing.JTable();
@@ -109,7 +126,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
         Pnl_ingresoDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(52, 78, 65), 1, true));
 
         Lbl_idAsn.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        Lbl_idAsn.setText("ID ASIGNACIÓN:");
+        Lbl_idAsn.setText("ID ALMACENAMIENTO:");
 
         Txt_idAsn.setEditable(false);
         Txt_idAsn.setBackground(new java.awt.Color(172, 203, 225));
@@ -118,7 +135,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
         Txt_idAsn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(88, 129, 87)));
 
         Lbl_idVehiculo.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        Lbl_idVehiculo.setText("ID Vehiculo:");
+        Lbl_idVehiculo.setText("ID RUTA PEDIDO:");
 
         Txt_idAsignacion.setBackground(new java.awt.Color(172, 203, 225));
         Txt_idAsignacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -362,47 +379,79 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
         Txt_estado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Txt_estado.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(88, 129, 87)));
 
+        Lbl_idVehiculo1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        Lbl_idVehiculo1.setText("  ID BODEGA :");
+
+        Txt_idAsignacion1.setBackground(new java.awt.Color(172, 203, 225));
+        Txt_idAsignacion1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Txt_idAsignacion1.setText("0");
+        Txt_idAsignacion1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(88, 129, 87)));
+
+        jButton2.setText("?");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        Btn_buscarAsignacion1.setText("CARGAR");
+
         javax.swing.GroupLayout Pnl_ingresoDatosLayout = new javax.swing.GroupLayout(Pnl_ingresoDatos);
         Pnl_ingresoDatos.setLayout(Pnl_ingresoDatosLayout);
         Pnl_ingresoDatosLayout.setHorizontalGroup(
             Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Btn_fondoReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Btn_fondoGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Btn_fondoAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Btn_fondoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Btn_fondoModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Btn_fondoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
-            .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_ingresoDatosLayout.createSequentialGroup()
-                        .addComponent(Lbl_idAsn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(Txt_idAsn))
                     .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
-                        .addComponent(Lbl_estado)
-                        .addGap(79, 79, 79)
+                        .addContainerGap()
                         .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Txt_datos1)
-                            .addComponent(Txt_datos2)
-                            .addComponent(Txt_estado)))
-                    .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
-                        .addComponent(Lbl_idVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_ingresoDatosLayout.createSequentialGroup()
+                                .addComponent(Lbl_idAsn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Txt_idAsn))
+                            .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
+                                .addGap(139, 139, 139)
+                                .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Txt_datos1)
+                                    .addComponent(Txt_datos2)))
+                            .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
+                                .addComponent(Lbl_idVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addComponent(Txt_idAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Btn_buscarAsignacion))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Pnl_ingresoDatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Lbl_idVehiculo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Txt_idAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Txt_idAsignacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Btn_buscarAsignacion)))
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btn_buscarAsignacion1))
+                    .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Btn_fondoReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Btn_fondoGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Btn_fondoAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Btn_fondoEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Btn_fondoModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Btn_fondoCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(Txt_estado))
+            .addGroup(Pnl_ingresoDatosLayout.createSequentialGroup()
+                .addComponent(Lbl_estado)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Pnl_ingresoDatosLayout.setVerticalGroup(
             Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,6 +470,12 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
                 .addComponent(Txt_datos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Txt_datos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lbl_idVehiculo1)
+                    .addComponent(Txt_idAsignacion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(Btn_buscarAsignacion1))
                 .addGap(18, 18, 18)
                 .addGroup(Pnl_ingresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Lbl_estado)
@@ -568,7 +623,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
                 ruta.setIdRuta(Txt_idAsn.getText());
                 ruta.setIdVehiculo(Txt_idAsignacion.getText());
                 //ruta.setEstado(Txt_estado.getText());
-                rutaDAO.update(ruta);
+                //rutaDAO.update(ruta);
                 cargarDatos("");
                 procesosr.accionExitosa("Registro Exitoso", "Se ha registrado la ruta para el vehiculo: \"" + Txt_datos1.getText() + "\" correctamente");
                 limpiar();
@@ -589,7 +644,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
             if (procesosr.isNumeric(Txt_idAsn)) {
                 if (procesosr.confirmarEliminación("la ruta# " + Txt_idAsn.getText())) {
                     ruta.setIdRuta(Txt_idAsn.getText());
-                    rutaDAO.delete(ruta);
+                    //rutaDAO.delete(ruta);
                     cargarDatos("");
                     procesosr.accionExitosa("Eliminación Exitosa", "Se ha eliminado la ruta #" + Txt_idAsn.getText() + " correctamente");
                     limpiar();
@@ -611,7 +666,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
             if (procesosr.isNumeric(Txt_idAsignacion)) {
                 ruta.setIdVehiculo(Txt_idAsignacion.getText());
                 ruta.setEstado("0");
-                rutaDAO.insert(ruta);
+                //rutaDAO.insert(ruta);
                 cargarDatos("");
                 procesosr.accionExitosa("Registro Exitoso", "Se ha registrado la ruta para el vehiculo: \"" + Txt_datos1.getText() + "\" correctamente");
                 limpiar();
@@ -657,11 +712,18 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
         vst_vehiculos.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Vst_Bodega Vst_bodega = new Vst_Bodega();
+        Vst_bodega.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Bg_estados;
     private javax.swing.JLabel Btn_ayuda;
     private javax.swing.JButton Btn_buscarAsignacion;
+    private javax.swing.JButton Btn_buscarAsignacion1;
     private javax.swing.JLabel Btn_cancelar;
     private javax.swing.JLabel Btn_eliminar;
     private javax.swing.JPanel Btn_fondoAyuda;
@@ -677,6 +739,7 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel Lbl_id4;
     private javax.swing.JLabel Lbl_idAsn;
     private javax.swing.JLabel Lbl_idVehiculo;
+    private javax.swing.JLabel Lbl_idVehiculo1;
     private javax.swing.JPanel Pnl_datos;
     private javax.swing.JPanel Pnl_ingresoDatos;
     private javax.swing.JTable Tbl_Datos;
@@ -685,8 +748,10 @@ public class Prcs_RutaDestinatario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField Txt_datos2;
     private javax.swing.JTextField Txt_estado;
     private javax.swing.JTextField Txt_idAsignacion;
+    private javax.swing.JTextField Txt_idAsignacion1;
     private javax.swing.JTextField Txt_idAsn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
