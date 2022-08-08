@@ -1,11 +1,9 @@
 package trabajadores.vista;
 
-
+import administracion.controlador.ProcesosRepetidos;
 import administracion.controlador.Trabajadores;
 import administracion.modelo.TrabajadoresDAO;
 import java.util.List;
-
-import administracion.controlador.ProcesosRepetidos;
 import trabajadores.controlador.TrabajadorVehiculo;
 import trabajadores.modelo.TrabajadorVehiculoDAO;
 
@@ -13,12 +11,12 @@ import trabajadores.modelo.TrabajadorVehiculoDAO;
  * @author H. Leonel Dominguez C.
  * @github https://github.com/leoneldc
  */
-public class Vst_Asignaciones extends javax.swing.JFrame {
+public class Vst_Bodega extends javax.swing.JFrame {
 
     /**
      * Creates new form Vst_Vehiculos
      */
-    public Vst_Asignaciones() {
+    public Vst_Bodega() {
         initComponents();
         setTitle("CATALOGO VEHICULOS CON REPARTIDOR Y PILOTOS");
         cargarDatos();
@@ -121,14 +119,30 @@ public class Vst_Asignaciones extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vst_Asignaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vst_Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vst_Asignaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vst_Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vst_Asignaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vst_Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vst_Asignaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Vst_Bodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -149,7 +163,7 @@ public class Vst_Asignaciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vst_Asignaciones().setVisible(true);
+                new Vst_Bodega().setVisible(true);
             }
         });
     }
